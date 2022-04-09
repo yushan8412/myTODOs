@@ -1,8 +1,8 @@
 //
 //  AppDelegate.swift
-//  signUp
+//  collection view
 //
-//  Created by Yushan Yang on 2022/4/6.
+//  Created by Yushan Yang on 2022/4/9.
 //
 
 import UIKit

@@ -15,14 +15,44 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var checkTextField: UITextField!
     
+    @IBOutlet weak var segmentControl: UISegmentedControl!
+    
+    enum PageType {
+        case login
+        case signUp
+    }
+    
+    var currentPageType: PageType = .login {
+        didSet {
+//            viewForLogin(pageType: currentPageType)
+        }
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewForLogin(pageType: .login)
         // Do any additional setup after loading the view.
         accountTextField.delegate = self
         passwordTextField.delegate = self
         checkTextField.delegate = self
         
     }
+    
+    func viewForLogin(pageType: PageType) {
+        if pageType == .login{
+            checkTextField.isEnabled = false
+            checkTextField.backgroundColor = .gray
+        }
+        if pageType == .signUp{
+            checkTextField.isEnabled = true
+            checkTextField.backgroundColor = .white
+        }
+    }
+        
+//        checkTextField.isEnabled = false;  pageType == .login
+        
+
    
     func textFieldShouldReturn(_ textFielt: UITextField) -> Bool{
         self.accountTextField.resignFirstResponder()
@@ -32,14 +62,29 @@ class ViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
+    @IBAction func segmentedChange(_ sender: UISegmentedControl) { currentPageType = sender.selectedSegmentIndex == 0 ? .login : .signUp
+
+//        if sender.selectedSegmentIndex == 0 {
+//            currentPageType = .login
+//        } else {
+//            currentPageType = .signUp
+        }
+
+    
+    
+    
     @IBAction func pressButton(_ sender: Any) {
 //    func accountEmprt()
-        if let accountIsEmpty = self.accountTextField.text, accountIsEmpty.isEmpty {
+//        if let accountIsEmpty = self.accountTextField.text, accountIsEmpty.isEmpty {
+//            let alert = UIAlertController(title: "Error", message: "Account can not be empty", preferredStyle: .alert)
+//            alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+//            present(alert, animated: true, completion: {
+//                return
+//            })
+        if accountTextField.text? .isEmpty == true {
             let alert = UIAlertController(title: "Error", message: "Account can not be empty", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-            present(alert, animated: true, completion: {
-                return
-            })
+            present(alert, animated: true, completion: {return})
         }; if let passwordIsEmpty = self.passwordTextField.text, passwordIsEmpty.isEmpty {
             let alert = UIAlertController(title: "Error", message: "Password can not be empty", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
@@ -48,9 +93,12 @@ class ViewController: UIViewController, UITextFieldDelegate {
             let alert = UIAlertController(title: "Error", message: "Check password can not be empty", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
             present(alert, animated: true, completion: {return})
-      }
+       }
+            //; if accountTextField.text == "appworks_school@gmail.com" == false {
+            
+        }
     }
-}
+
     
         
        // let accountIsEmpty = self.accountTextField.text

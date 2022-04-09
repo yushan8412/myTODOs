@@ -32,6 +32,9 @@
                                     <segment title="Sign Up"/>
                                 </segments>
                                 <color key="selectedSegmentTintColor" systemColor="tertiaryLabelColor"/>
+                                <connections>
+                                    <action selector="segmentedChange:" destination="BYZ-38-t0r" eventType="valueChanged" id="oh3-ME-hrw"/>
+                                </connections>
                             </segmentedControl>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5VG-Ot-EHS">
                                 <rect key="frame" x="79.5" y="313" width="255" height="125"/>
@@ -131,7 +134,8 @@
                     <connections>
                         <outlet property="accountTextField" destination="Dkf-Le-1ep" id="9VZ-ZW-q3i"/>
                         <outlet property="checkTextField" destination="1cn-GL-RZG" id="wEl-IG-utL"/>
-                        <outlet property="passwordTextField" destination="1cn-GL-RZG" id="z34-qN-JIK"/>
+                        <outlet property="passwordTextField" destination="LdS-Jc-uZP" id="o2K-BB-4xf"/>
+                        <outlet property="segmentControl" destination="22V-00-jga" id="crc-Ky-17o"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
