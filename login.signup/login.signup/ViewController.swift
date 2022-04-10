@@ -24,7 +24,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     var currentPageType: PageType = .login {
         didSet {
-//            viewForLogin(pageType: currentPageType)
+           viewForLogin(pageType: currentPageType)
         }
     }
     
@@ -43,7 +43,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
         if pageType == .login{
             checkTextField.isEnabled = false
             checkTextField.backgroundColor = .gray
-        }
+        } 
+        
         if pageType == .signUp{
             checkTextField.isEnabled = true
             checkTextField.backgroundColor = .white
@@ -63,6 +64,13 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func segmentedChange(_ sender: UISegmentedControl) { currentPageType = sender.selectedSegmentIndex == 0 ? .login : .signUp
+        
+//        if sender.selectedSegmentIndex == 0 {
+//
+//        }
+        
+        
+        
 
 //        if sender.selectedSegmentIndex == 0 {
 //            currentPageType = .login
@@ -93,7 +101,14 @@ class ViewController: UIViewController, UITextFieldDelegate {
             let alert = UIAlertController(title: "Error", message: "Check password can not be empty", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
             present(alert, animated: true, completion: {return})
-       }
+        };
+        if accountTextField.text != "appworks_school@gmail.com",
+           passwordTextField.text != "1234" {
+            let alert = UIAlertController(title: "Error", message: "Signup fail", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+            present(alert, animated: true, completion: {return})
+            
+        }
             //; if accountTextField.text == "appworks_school@gmail.com" == false {
             
         }

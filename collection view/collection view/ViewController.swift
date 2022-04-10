@@ -8,13 +8,18 @@
 import UIKit
 
 class ViewController: UIViewController {
+    enum Section {
+        case main
+    }
 
     @IBOutlet weak var collectionView: UICollectionView!
+    var dataSource = UICollectionViewDiffableDataSource<Section, Int>!
     
     override func viewDidLoad() {
         super.viewDidLoad()
       
         collectionView.collectionViewLayout = configureLayout()
+        configureDataSource()
     }
  
     func configureLayout() -> UICollectionViewCompositionalLayout {
@@ -29,6 +34,19 @@ class ViewController: UIViewController {
             NSCollectionLayoutSection(group: group)
         
         return UICollectionViewCompositionalLayout(section: section)
+    }
+    
+    func configureDataSource() {
+        dataSource = UICollectionViewDiffableDataSource<Section,Int>(collectionView: self.collectionView) {
+            (collectionView, IndexPath, number) -> UICollectionViewCell? in
+            
+            guard let cell = collectionView.dequeueReusableCell(withIdentifier: NumberCell.reuseIdentifier, for: IndexPath) else {
+                fatalError("Cannot creat new cell")
+            }
+            cell.label.text = number.description
+            return cell
+        }
+        
     }
 
 }
