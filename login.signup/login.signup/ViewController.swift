@@ -81,7 +81,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     
     
-    @IBAction func pressButton(_ sender: Any) {
+    @IBAction func pressButton(_ sender: UISegmentedControl) {
+        if sender.selectedSegmentIndex == 0 {
 //    func accountEmprt()
 //        if let accountIsEmpty = self.accountTextField.text, accountIsEmpty.isEmpty {
 //            let alert = UIAlertController(title: "Error", message: "Account can not be empty", preferredStyle: .alert)
@@ -101,8 +102,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
             let alert = UIAlertController(title: "Error", message: "Check password can not be empty", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
             present(alert, animated: true, completion: {return})
-        };
-        if accountTextField.text != "appworks_school@gmail.com",
+            }
+        }
+        if sender.selectedSegmentIndex == 1 {
+            if accountTextField.text != "appworks_school@gmail.com",
            passwordTextField.text != "1234" {
             let alert = UIAlertController(title: "Error", message: "Signup fail", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
@@ -113,6 +116,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
             
         }
     }
+}
 
     
         
